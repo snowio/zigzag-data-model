@@ -130,6 +130,12 @@ class ProductInformation
         return $this->json;
     }
 
+    public function equals($other): bool
+    {
+        return $other instanceof self &&
+            $this->json === $other->json;
+    }
+
     private function __construct()
     {
     }

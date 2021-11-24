@@ -1,27 +1,15 @@
 <?php
-
-
 namespace SnowIO\ZigZagDataModel\Product;
 
+use SnowIO\ZigZagDataModel\Internal\SetTrait;
 
 class ProductInformationCollection implements \IteratorAggregate
 {
-    private $items = [];
+    use SetTrait;
 
-    public static function create(): self
+    private static function getKey(ProductInformation $productInformation): ?string
     {
-        return new self;
-    }
-
-    /**
-     * @param ProductInformation[] $items
-     * @return $this
-     */
-    public static function of(array $items): self
-    {
-        $result = new self;
-        $result->items = $items;
-        return $result;
+        return md5(json_encode($productInformation->toJson()));
     }
 
     public function toJson(): array
@@ -36,5 +24,10 @@ class ProductInformationCollection implements \IteratorAggregate
         foreach ($this->items as $item) {
             yield $item;
         }
+    }
+
+    private static function itemsAreEqual(ProductInformation $item1, ProductInformation $item2): bool
+    {
+        return $item1->equals($item2);
     }
 }

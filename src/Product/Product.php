@@ -4,73 +4,76 @@ namespace SnowIO\ZigZagDataModel\Product;
 class Product
 {
     private $json = [];
+    private $productInformation;
+    private $prices;
 
     public static function of(string $gtin, ProductInformationCollection $productInformation): self
     {
         $result = new self;
         $result->json['gtin'] = $gtin;
-        $result->json['productInformation'] = $productInformation;
+        $result->productInformation = $productInformation;
+        $result->prices = PriceCollection::create();
         return $result;
     }
 
-    public function getRetailerCode(): self
+    public function getRetailerCode()
     {
         return $this->json['retailerCode'];
     }
 
-    public function getMasterSku(): self
+    public function getMasterSku()
     {
         return $this->json['masterSku'];
     }
 
-    public function getBrand(): self
+    public function getBrand()
     {
         return $this->json['brand'];
     }
 
-    public function getGoogleProductCategory(): self
+    public function getGoogleProductCategory()
     {
         return $this->json['googleProductCategory'];
     }
 
-    public function getGtin(): self
+    public function getGtin()
     {
         return $this->json['gtin'];
     }
 
-    public function getMpn(): self
+    public function getMpn()
     {
         return $this->json['mpn'];
     }
 
-    public function getCondition(): self
+    public function getCondition()
     {
         return $this->json['condition'];
     }
 
-    public function getAvailability(): self
+    public function getAvailability()
     {
         return $this->json['availability'];
     }
 
-    public function getSalePriceEffectiveDate(): self
+    public function getSalePriceEffectiveDate()
     {
         return $this->json['salePriceEffectiveDate'];
     }
 
-    public function getNumberOfPieces(): self
+    public function getNumberOfPieces()
     {
         return $this->json['numberOfPieces'];
     }
 
-    public function getProductInformation(): self
+    public function getProductInformation(): ProductInformationCollection
     {
-        return $this->json['productInformation'];
+        return $this->productInformation;
     }
 
-    public function getPrices(): self
+    public function getPrices(): PriceCollection
     {
-        return $this->json['prices'];
+        return $this->prices;
     }
     
     public function withRetailerCode(string $retailerCode): self
@@ -146,14 +149,14 @@ class Product
     public function withProductInformation(ProductInformationCollection $productInformation): self
     {
         $result = clone $this;
-        $result->json['productInformation'] = $productInformation;
+        $result->productInformation = $productInformation;
         return $result;
     }
 
     public function withPrices(PriceCollection $prices): self
     {
         $result = clone $this;
-        $result->json['prices'] = $prices;
+        $result->prices = $prices;
         return $result;
     }
 
@@ -161,14 +164,22 @@ class Product
     {
         $json = $this->json;
 
-        $json['productInformation'] = $json['productInformation']->toJson();
-        $json['prices'] = $json['prices']->toJson();
+        $json['productInformation'] = $this->productInformation->toJson();
+        $json['prices'] = $this->prices->toJson();
         return $json;
+    }
+
+    public function equals($other): bool
+    {
+        return $other instanceof self &&
+            $other->productInformation->equals($this->productInformation) &&
+            $other->prices->equals($this->prices) &&
+            $other->json === $this->json;
     }
 
     private function __construct()
     {
-        $this->json['prices'] = PriceCollection::create();
-        $this->json['productInformation'] = ProductInformationCollection::create();
+        $this->prices = PriceCollection::create();
+        $this->productInformation = ProductInformationCollection::create();
     }
 }

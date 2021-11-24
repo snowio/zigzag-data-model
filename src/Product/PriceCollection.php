@@ -2,24 +2,15 @@
 
 namespace SnowIO\ZigZagDataModel\Product;
 
+use SnowIO\ZigZagDataModel\Internal\SetTrait;
+
 class PriceCollection
 {
-    private $items = [];
+    use SetTrait;
 
-    public static function create(): self
+    private static function getKey(Price $price): ?string
     {
-        return new self;
-    }
-
-    /**
-     * @param Price[] $items
-     * @return $this
-     */
-    public function of(array $items): self
-    {
-        $result = new $items;
-        $result->items = $items;
-        return $result;
+        return md5(json_encode($price->toJson()));
     }
 
     public function toJson(): array
@@ -34,5 +25,10 @@ class PriceCollection
         foreach ($this->items as $item) {
             yield $item;
         }
+    }
+
+    private static function itemsAreEqual(Price $item1, Price $item2): bool
+    {
+        return $item1->equals($item2);
     }
 }

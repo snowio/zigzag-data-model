@@ -12,9 +12,14 @@
             "SnowIO\\ZigZagDataModel\\": "src"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "SnowIO\\ZigZagDataModel\\Tests\\Unit\\": "tests/unit"
+        }
+    },
     "minimum-stability": "dev",
     "require": {},
     "require-dev": {
-        "phpunit/phpunit": "9.5.x-dev"
+        "phpunit/phpunit": "^7.3"
     }
 }

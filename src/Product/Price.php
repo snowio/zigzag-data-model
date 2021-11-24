@@ -52,6 +52,12 @@ class Price
         return $this->json;
     }
 
+    public function equals($other): bool
+    {
+        return $other instanceof self &&
+            $other->json === $this->json;
+    }
+
     private function __construct()
     {
     }

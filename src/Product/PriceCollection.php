@@ -15,9 +15,9 @@ class PriceCollection
 
     public function toJson(): array
     {
-        return array_map(static function (Price $item) {
+        return array_values(array_map(static function (Price $item) {
             return $item->toJson();
-        }, $this->items);
+        }, $this->items));
     }
 
     public function getIterator(): \Generator

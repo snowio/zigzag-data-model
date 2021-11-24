@@ -14,9 +14,9 @@ class ProductInformationCollection implements \IteratorAggregate
 
     public function toJson(): array
     {
-        return array_map(static function (ProductInformation $item) {
+        return array_values(array_map(static function (ProductInformation $item) {
             return $item->toJson();
-        }, $this->items);
+        }, $this->items));
     }
 
     public function getIterator(): \Generator

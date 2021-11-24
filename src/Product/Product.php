@@ -13,6 +13,66 @@ class Product
         return $result;
     }
 
+    public function getRetailerCode(): self
+    {
+        return $this->json['retailerCode'];
+    }
+
+    public function getMasterSku(): self
+    {
+        return $this->json['masterSku'];
+    }
+
+    public function getBrand(): self
+    {
+        return $this->json['brand'];
+    }
+
+    public function getGoogleProductCategory(): self
+    {
+        return $this->json['googleProductCategory'];
+    }
+
+    public function getGtin(): self
+    {
+        return $this->json['gtin'];
+    }
+
+    public function getMpn(): self
+    {
+        return $this->json['mpn'];
+    }
+
+    public function getCondition(): self
+    {
+        return $this->json['condition'];
+    }
+
+    public function getAvailability(): self
+    {
+        return $this->json['availability'];
+    }
+
+    public function getSalePriceEffectiveDate(): self
+    {
+        return $this->json['salePriceEffectiveDate'];
+    }
+
+    public function getNumberOfPieces(): self
+    {
+        return $this->json['numberOfPieces'];
+    }
+
+    public function getProductInformation(): self
+    {
+        return $this->json['productInformation'];
+    }
+
+    public function getPrices(): self
+    {
+        return $this->json['prices'];
+    }
+    
     public function withRetailerCode(string $retailerCode): self
     {
         $result = clone $this;
@@ -34,7 +94,7 @@ class Product
         return $result;
     }
 
-    public function googleProductCategory(string $googleProductCategory): self
+    public function withGoogleProductCategory(string $googleProductCategory): self
     {
         $result = clone $this;
         $result->json['googleProductCategory'] = $googleProductCategory;

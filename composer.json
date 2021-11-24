@@ -1,0 +1,20 @@
+{
+    "name": "snowio/zigzag-data-model",
+    "description": "Data model for zigzag",
+    "authors": [
+        {
+            "name": "Alexander Wanyoike",
+            "email": "amw@amp.co"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "SnowIO\\ZigZagDataModel\\": "src"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "9.5.x-dev"
+    }
+}

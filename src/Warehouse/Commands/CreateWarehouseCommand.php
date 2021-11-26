@@ -1,5 +1,7 @@
 <?php
-namespace SnowIO\ZigZagDataModel\Warehouse;
+namespace SnowIO\ZigZagDataModel\Warehouse\Commands;
+
+use SnowIO\ZigZagDataModel\Warehouse\Warehouse;
 
 class CreateWarehouseCommand
 {

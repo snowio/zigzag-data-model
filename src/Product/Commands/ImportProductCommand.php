@@ -1,6 +1,8 @@
 <?php
 
-namespace SnowIO\ZigZagDataModel\Product;
+namespace SnowIO\ZigZagDataModel\Product\Commands;
+
+use SnowIO\ZigZagDataModel\Product\Product;
 
 class ImportProductCommand
 {

@@ -753,4 +753,10 @@ class Product
 
         return $this->json;
     }
+
+    private function __construct()
+    {
+        $this->productInformation = ProductInformationCollection::create();
+
+    }
 }

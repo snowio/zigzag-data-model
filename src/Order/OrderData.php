@@ -87,7 +87,7 @@ class OrderData
     /**
      * @return string
      */
-    public function getOrderDate(): string
+    public function getOrderDate(): ?string
     {
         return $this->orderDate;
     }
@@ -163,7 +163,7 @@ class OrderData
     /**
      * @return float
      */
-    public function getTotal(): float
+    public function getTotal(): ?float
     {
         return $this->total;
     }
@@ -201,7 +201,7 @@ class OrderData
     /**
      * @return string
      */
-    public function getCurrencyIso3Code(): string
+    public function getCurrencyIso3Code(): ?string
     {
         return $this->currencyIso3Code;
     }
@@ -372,7 +372,7 @@ class OrderData
     /**
      * @return string
      */
-    public function getRetailerName(): string
+    public function getRetailerName(): ?string
     {
         return $this->retailerName;
     }
@@ -391,7 +391,7 @@ class OrderData
     /**
      * @return string
      */
-    public function getAccount(): string
+    public function getAccount(): ?string
     {
         return $this->account;
     }
@@ -877,15 +877,10 @@ class OrderData
 
     public function equals($other)
     {
-        return $other instanceof self &&
-            $other->toJson() == $this->toJson();
+        return $other instanceof self && $other->toJson() === $this->toJson();
     }
 
     private function __construct()
     {
-        /**
-         * Constructor instantiation disabled.
-         * Object can only be instantiated via fromOrderResponseData.
-         */
     }
 }

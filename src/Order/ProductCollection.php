@@ -2,6 +2,8 @@
 
 namespace SnowIO\ZigZagDataModel\Order;
 
+use Iterator;
+
 class ProductCollection implements \IteratorAggregate
 {
     /** @var Product[] $items */
@@ -43,7 +45,16 @@ class ProductCollection implements \IteratorAggregate
         return $result;
     }
 
-    public function getIterator(): \Iterator
+    public static function fromIterator(Iterator $iterator): self
+    {
+        $result = self::create();
+        foreach ($iterator as $item) {
+            $result->items[] = Product::fromJson($item);
+        }
+        return $result;
+    }
+
+    public function getIterator(): Iterator
     {
         foreach ($this->items as $item) {
             yield $item;

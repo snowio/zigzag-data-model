@@ -10,7 +10,7 @@ use SnowIO\ZigZagDataModel\Product\ProductInformationCollection;
 
 class ProductTest extends TestCase
 {
-    public function testEquals()
+    public function testEquals(): void
     {
         $product = Product::of('120349', ProductInformationCollection::of([
             ProductInformation::of('Test', 'GB')

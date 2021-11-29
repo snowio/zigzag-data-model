@@ -49,7 +49,7 @@ class ProductCollection implements \IteratorAggregate
     {
         $result = self::create();
         foreach ($iterator as $item) {
-            $result->items[] = Product::fromJson($item);
+            $result->items[] = $item;
         }
         return $result;
     }

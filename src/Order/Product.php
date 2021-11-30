@@ -754,9 +754,14 @@ class Product
         return $this->json;
     }
 
+    public function equals($other): bool
+    {
+        return $other instanceof self &&
+            $this->toJson() === $other->toJson();
+    }
+
     private function __construct()
     {
         $this->productInformation = ProductInformationCollection::create();
-
     }
 }

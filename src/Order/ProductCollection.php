@@ -3,30 +3,15 @@
 namespace SnowIO\ZigZagDataModel\Order;
 
 use Iterator;
+use SnowIO\ZigZagDataModel\Internal\SetTrait;
 
 class ProductCollection implements \IteratorAggregate
 {
-    /** @var Product[] $items */
-    private $items = [];
+    use SetTrait;
 
-    private function __construct(array $products = [])
+    private static function getKey(Product $product): ?string
     {
-        $this->items = $products;
-    }
-
-    public static function create(): self
-    {
-        return new self([]);
-    }
-
-    public static function of(array $items): self
-    {
-        return new self($items);
-    }
-
-    public function map(callable $callable): array
-    {
-        return array_map($callable, $this->items);
+        return $product->getSku();
     }
 
     public function toJson(): array
@@ -59,5 +44,10 @@ class ProductCollection implements \IteratorAggregate
         foreach ($this->items as $item) {
             yield $item;
         }
+    }
+
+    private static function itemsAreEqual(Product $item1, Product $item2): bool
+    {
+        return $item1->equals($item2);
     }
 }

@@ -3,7 +3,7 @@ namespace SnowIO\ZigZagDataModel\Order\Commands;
 
 use SnowIO\ZigZagDataModel\Order\ProductCollection;
 
-class UpdateOrderCommand
+class AddProductToRetailerOrderCommand
 {
     public static function of(string $retailerCode, string $orderNumber, ProductCollection $products): self
     {
@@ -13,7 +13,7 @@ class UpdateOrderCommand
     public function toJson(): array
     {
         return [
-            "uri" => "/RetailerOrders/{$this->retailerCode}/{$this->orderNumber}",
+            "uri" => "/RetailerOrders/{$this->retailerCode}/{$this->orderNumber}/Product",
             "body" => [ "products" => $this->products->toJson() ]
         ];
     }

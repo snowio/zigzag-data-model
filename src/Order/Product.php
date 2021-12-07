@@ -2,7 +2,7 @@
 
 namespace SnowIO\ZigZagDataModel\Order;
 
-use SnowIO\ZigZagDataModel\Order\Product\PriceCollection;;
+use SnowIO\ZigZagDataModel\Order\Product\PriceCollection;
 use SnowIO\ZigZagDataModel\Order\Product\ProductInformationCollection;
 use SnowIO\ZigZagDataModel\Order\Product\RetailerProductInfo;
 

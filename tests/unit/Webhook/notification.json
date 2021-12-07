@@ -1,0 +1,40 @@
+{
+ "data": {
+  "retailerCode": "7923794297",
+  "orderNumber": "12342151",
+  "returnId": "413413515",
+  "source": "DPD",
+  "externalReference": "M100000384",
+  "country": "GB",
+  "customerName": "Steve",
+  "salutation": "Mr",
+  "customerType": 0,
+  "carrier": "DPD",
+  "carrierService": "1",
+  "shippingCost": "10.00",
+  "returnCost": "10.00",
+  "returnCostCurrency": "GBP",
+  "voucherValue": "0.00",
+  "warehouse": "TEST",
+  "warehouseReference": "TEST",
+  "trackingId": "TRACKING",
+  "dateTimeStatusChange": "11-11-2012T10:05:19Z",
+  "lastTrackingStatus": "Received",
+  "orderStatus": "Requested",
+  "returnOption": "1",
+  "products": [
+   {
+    "productSku": "NPC093284",
+    "productTitle": "Test Product",
+    "grade": "test",
+    "quantity": "1",
+    "returnReason": "test",
+    "currency": "GBP",
+    "itemCost": "10.00",
+    "returnOption": "1",
+    "notes": "test",
+    "notesContent": "test"
+   }
+  ]
+ }
+}

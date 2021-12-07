@@ -1,11 +1,9 @@
 <?php
-
 namespace SnowIO\ZigZagDataModel\Webhook;
 
-class Products
+class Product
 {
 	private $json;
-
 
 	public static function fromJson(array $json): self
 	{
@@ -14,14 +12,12 @@ class Products
 		return $result;
 	}
 
-
 	public function withProductSku(string $productSku): self
 	{
 		$result = clone $this;
 		$result->json['productSku'] = $productSku;
 		return $result;
 	}
-
 
 	public function withProductTitle(string $productTitle): self
 	{
@@ -30,14 +26,12 @@ class Products
 		return $result;
 	}
 
-
 	public function withGrade(string $grade): self
 	{
 		$result = clone $this;
 		$result->json['grade'] = $grade;
 		return $result;
 	}
-
 
 	public function withQuantity(string $quantity): self
 	{
@@ -46,14 +40,12 @@ class Products
 		return $result;
 	}
 
-
 	public function withReturnReason(string $returnReason): self
 	{
 		$result = clone $this;
 		$result->json['returnReason'] = $returnReason;
 		return $result;
 	}
-
 
 	public function withCurrency(string $currency): self
 	{
@@ -62,14 +54,12 @@ class Products
 		return $result;
 	}
 
-
 	public function withItemCost(string $itemCost): self
 	{
 		$result = clone $this;
 		$result->json['itemCost'] = $itemCost;
 		return $result;
 	}
-
 
 	public function withReturnOption(string $returnOption): self
 	{
@@ -78,14 +68,12 @@ class Products
 		return $result;
 	}
 
-
 	public function withNotes(string $notes): self
 	{
 		$result = clone $this;
 		$result->json['notes'] = $notes;
 		return $result;
 	}
-
 
 	public function withNotesContent(string $notesContent): self
 	{
@@ -94,72 +82,66 @@ class Products
 		return $result;
 	}
 
-
 	public function getProductSku(): string
 	{
 		return $this->json['productSku'];
 	}
-
 
 	public function getProductTitle(): string
 	{
 		return $this->json['productTitle'];
 	}
 
-
 	public function getGrade(): string
 	{
 		return $this->json['grade'];
 	}
-
 
 	public function getQuantity(): string
 	{
 		return $this->json['quantity'];
 	}
 
-
 	public function getReturnReason(): string
 	{
 		return $this->json['returnReason'];
 	}
-
 
 	public function getCurrency(): string
 	{
 		return $this->json['currency'];
 	}
 
-
 	public function getItemCost(): string
 	{
 		return $this->json['itemCost'];
 	}
-
 
 	public function getReturnOption(): string
 	{
 		return $this->json['returnOption'];
 	}
 
-
 	public function getNotes(): string
 	{
 		return $this->json['notes'];
 	}
-
 
 	public function getNotesContent(): string
 	{
 		return $this->json['notesContent'];
 	}
 
-
 	public function toJson(): array
 	{
 		return $this->json;
 	}
 
+    public function equals($other): bool
+    {
+        return $other instanceof self &&
+            $other->toJson() === $this->toJson();
+    }
 
 	private function __construct()
 	{

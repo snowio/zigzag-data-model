@@ -1,39 +1,39 @@
 <?php
+namespace SnowIO\ZigZagDataModel\Webhook\Event;
 
-namespace Online4Baby\ZigZag\OrderStatus;
+use SnowIO\ZigZagDataModel\Webhook\Data;
 
-class WebhookNotification
+class Notification
 {
 	private $json;
-
+	private $data;
 
 	public static function fromJson(array $json): self
 	{
 		$result = new self;
 		$result->json = $json;
+		$result->data = Data::fromJson($json['data']);
 		return $result;
 	}
-
 
 	public function withData(Data $data): self
 	{
 		$result = clone $this;
-		$result->json['data'] = $data;
+		$result->data = $data;
 		return $result;
 	}
 
-
 	public function getData(): Data
 	{
-		return $this->json['data'];
+		return $this->data;
 	}
-
 
 	public function toJson(): array
 	{
-		return $this->json;
+	    $json = $this->json;
+	    $json['data'] = $this->data->toJson();
+		return $json;
 	}
-
 
 	private function __construct()
 	{

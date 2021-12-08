@@ -4,7 +4,7 @@ namespace SnowIO\ZigZagDataModel\Webhook;
 use Iterator;
 use SnowIO\ZigZagDataModel\Internal\SetTrait;
 
-class ProductCollection
+class ProductCollection implements \IteratorAggregate
 {
     use SetTrait;
 

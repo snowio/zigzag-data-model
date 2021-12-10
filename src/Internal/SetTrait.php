@@ -8,7 +8,7 @@ trait SetTrait
      */
     public static function of(array $items): self
     {
-        $set = new self;
+        $set = new self();
         foreach ($items as $item) {
             try {
                 $key = self::getKey($item);
@@ -16,7 +16,7 @@ trait SetTrait
                 throw new \Exception($e->getMessage());
             }
             if (isset($set->items[$key])) {
-                throw new \Exception;
+                throw new \Exception();
             }
             $set->items[$key] = $item;
         }
@@ -28,7 +28,7 @@ trait SetTrait
      */
     public static function create(): self
     {
-        return new self;
+        return new self();
     }
 
     /**
@@ -36,7 +36,7 @@ trait SetTrait
      */
     public function filter(callable $predicate): self
     {
-        $result = new self;
+        $result = new self();
         $result->items = \array_filter($this->items, $predicate);
         return $result;
     }
@@ -69,7 +69,7 @@ trait SetTrait
      */
     public function merge(self $otherSet): self
     {
-        $result = new self;
+        $result = new self();
         $result->items = \array_merge($this->items, $otherSet->items);
         return $result;
     }
@@ -79,7 +79,7 @@ trait SetTrait
      */
     public function diff(self $otherSet): self
     {
-        $result = new self;
+        $result = new self();
         foreach ($this->items as $key => $item) {
             $otherItem = $otherSet->items[$key] ?? null;
             if (!isset($otherItem) || !self::itemsAreEqual($item, $otherItem)) {
@@ -94,7 +94,7 @@ trait SetTrait
      */
     public function diffByKey(self $otherSet): self
     {
-        $result = new self;
+        $result = new self();
         $result->items = \array_diff_key($this->items, $otherSet->items);
         return $result;
     }

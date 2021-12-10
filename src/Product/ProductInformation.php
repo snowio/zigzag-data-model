@@ -7,7 +7,7 @@ class ProductInformation
 
     public static function of(string $name, string $countryCode): self
     {
-        $result = new self;
+        $result = new self();
         $result->json['name'] = $name;
         $result->json['countryCode'] = $countryCode;
         return $result;

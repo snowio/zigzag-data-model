@@ -8,7 +8,7 @@ class WarehouseAddress
 
     public static function create(): self
     {
-        return new self;
+        return new self();
     }
 
     public function withDistrict(string $district): self

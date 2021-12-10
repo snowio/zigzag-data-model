@@ -17,6 +17,11 @@
             "SnowIO\\ZigZagDataModel\\Tests\\Unit\\": "tests/unit"
         }
     },
+    "scripts": {
+        "lint": "vendor/bin/php-cs-fixer fix --diff src",
+        "test:lint": "vendor/bin/php-cs-fixer fix --diff --dry-run src",
+        "test:types": "php vendor/bin/phpstan.phar analyze src"
+    },
     "minimum-stability": "dev",
     "require": {},
     "require-dev": {

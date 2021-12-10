@@ -12,7 +12,7 @@ class ImportProductCommand
 
     public static function of(string $productSku, Product $product): self
     {
-        $result = new self;
+        $result = new self();
         $result->productSku = $productSku;
         $result->product = $product;
 

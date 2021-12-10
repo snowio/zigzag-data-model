@@ -2,8 +2,6 @@
 
 namespace SnowIO\ZigZagDataModel\Order\Product;
 
-use SnowIO\ZigZagDataModel\Order\Product;
-
 class ProductInformationCollection implements \IteratorAggregate
 {
     /** @var ProductInformation[] $items */

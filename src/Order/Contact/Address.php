@@ -29,7 +29,7 @@ class Address
 
     public static function create(): self
     {
-        return new self;
+        return new self();
     }
 
     /**
@@ -224,7 +224,7 @@ class Address
 
     public static function fromJson(array $json): self
     {
-        $result = new self;
+        $result = new self();
         $result->streetAddress1 = $json['streetAddress1'];
         $result->phone = $json['phone'] ?? null;
         $result->city = $json['city'];

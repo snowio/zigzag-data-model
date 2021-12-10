@@ -12,7 +12,7 @@ class Warehouse
         string $operatingCurrency = "GBP",
         int $operatingLanguage = 2
     ): self {
-        $result = new self;
+        $result = new self();
         $result->json['dcCode'] = $dcCode;
         $result->json['timeZone'] = $timeZone;
         $result->json['operatingCurrency'] = $operatingCurrency;

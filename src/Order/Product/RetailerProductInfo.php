@@ -13,10 +13,9 @@ class RetailerProductInfo
     /** @var string $size */
     private $size;
 
-
     public static function create(): self
     {
-        return new self;
+        return new self();
     }
 
     /**
@@ -78,7 +77,7 @@ class RetailerProductInfo
 
     public static function fromJson(array $json): self
     {
-        $result = new self;
+        $result = new self();
         $result->title = $json['title'];
         $result->colour = $json['colour'];
         $result->size = $json['size'] ?? null;

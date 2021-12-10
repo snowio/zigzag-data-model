@@ -9,7 +9,7 @@ class Product
 
     public static function of(string $gtin, ProductInformationCollection $productInformation): self
     {
-        $result = new self;
+        $result = new self();
         $result->json['gtin'] = $gtin;
         $result->productInformation = $productInformation;
         $result->prices = PriceCollection::create();
@@ -75,7 +75,7 @@ class Product
     {
         return $this->prices;
     }
-    
+
     public function withRetailerCode(string $retailerCode): self
     {
         $result = clone $this;
@@ -103,28 +103,28 @@ class Product
         $result->json['googleProductCategory'] = $googleProductCategory;
         return $result;
     }
-    
+
     public function withGtin(string $gtin): self
     {
         $result = clone $this;
         $result->json['gtin'] = $gtin;
         return $result;
     }
-    
+
     public function withMpn(string $mpn): self
     {
         $result = clone $this;
         $result->json['mpn'] = $mpn;
         return $result;
     }
-    
+
     public function withCondition(string $condition): self
     {
         $result = clone $this;
         $result->json['condition'] = $condition;
         return $result;
     }
-    
+
     public function withAvailability(string $availability): self
     {
         $result = clone $this;
@@ -138,14 +138,14 @@ class Product
         $result->json['salePriceEffectiveDate'] = $salePriceEffectiveDate;
         return $result;
     }
-    
+
     public function withNumberOfPieces(string $numberOfPieces): self
     {
         $result = clone $this;
         $result->json['numberOfPieces'] = $numberOfPieces;
         return $result;
     }
-    
+
     public function withProductInformation(ProductInformationCollection $productInformation): self
     {
         $result = clone $this;

@@ -19,7 +19,7 @@ class Price
 
     public static function create(): self
     {
-        return new self;
+        return new self();
     }
 
     /**
@@ -119,7 +119,7 @@ class Price
 
     public static function fromJson(array $json): self
     {
-        $result = new self;
+        $result = new self();
         $result->countryCode = $json['countryCode'];
         $result->rrp = $json['rrp'] ?? null;
         $result->sellingPrice = $json['sellingPrice'] ?? null;

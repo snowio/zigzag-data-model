@@ -71,7 +71,7 @@ class Product
 
     public static function create(): self
     {
-        return new self;
+        return new self();
     }
 
     /**
@@ -627,7 +627,7 @@ class Product
 
     public static function fromJson(array $json): self
     {
-        $result = new self;
+        $result = new self();
         $result->sku = $json['sku'];
         $result->masterSku = $json['masterSku'] ?? null;
         $result->brand = $json['brand'] ?? null;
@@ -654,11 +654,11 @@ class Product
         $result->orderLineItemNumber = $json['orderLineItemNumber'] ?? null;
         $result->vatRate = $json['vatRate'] ?? null;
         $result->vatValue = $json['vatValue'] ?? null;
-        $result->retailerProductInfo = isset ($json['retailerProductInfo']) ?
+        $result->retailerProductInfo = isset($json['retailerProductInfo']) ?
             RetailerProductInfo::fromJson($json['retailerProductInfo']) :
             null;
         $result->productInformation = ProductInformationCollection::fromJson($json['productInformation']);
-        $result->prices = isset ($json['prices']) ?
+        $result->prices = isset($json['prices']) ?
             PriceCollection::fromJson($json['prices']) :
             null;
         return $result;

@@ -7,7 +7,7 @@ class Price
 
     public static function of(string $countryCode)
     {
-        $result = new self;
+        $result = new self();
         $result->json['countryCode'] = $countryCode;
         return $result;
     }

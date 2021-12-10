@@ -10,7 +10,7 @@ class CreateWarehouseCommand
 
     public static function of(Warehouse $warehouse): self
     {
-        $result = new self;
+        $result = new self();
         $result->warehouse = $warehouse;
         return $result;
     }

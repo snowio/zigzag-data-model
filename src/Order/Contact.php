@@ -23,7 +23,7 @@ class Contact
 
     public static function create(): self
     {
-        return new self;
+        return new self();
     }
 
     /**
@@ -142,7 +142,7 @@ class Contact
 
     public static function fromJson(array $json): self
     {
-        $result = new self;
+        $result = new self();
         $result->address = Address::fromJson($json['address']);
         $result->firstName = $json['firstName'];
         $result->lastName = $json['lastName'] ?? null;

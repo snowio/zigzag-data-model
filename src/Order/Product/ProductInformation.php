@@ -41,10 +41,9 @@ class ProductInformation
     /** @var string|null $season */
     private $season = null;
 
-
     public static function create(): self
     {
-        return new self;
+        return new self();
     }
 
     /**
@@ -372,7 +371,7 @@ class ProductInformation
 
     public static function fromJson(array $json): self
     {
-        $result = new self;
+        $result = new self();
         $result->itemTitle = $json['itemTitle'];
         $result->productDescription = $json['productDescription'] ?? null;
         $result->gender = $json['gender'] ?? null;

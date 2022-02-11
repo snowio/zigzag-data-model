@@ -7,23 +7,25 @@ class CreateOrderCommand
 {
     private $order;
     private $orderNumber;
+    private $urlPrefix;
 
-    public static function of(string $orderNumber, OrderData $order): self
+    public static function of(string $orderNumber, OrderData $order, $urlPrefix = "/RetailerOrders/%s"): self
     {
-        return new self($orderNumber, $order);
+        return new self($orderNumber, $order, $urlPrefix);
     }
 
     public function toJson(): array
     {
         return [
-            "uri" => "/RetailerOrders/{$this->orderNumber}",
-            "body" => $this->order->toJson()
+          "uri" => sprintf($this->urlPrefix, $this->orderNumber),
+          "body" => $this->order->toJson()
         ];
     }
 
-    private function __construct(string $orderNumber, OrderData $order)
+    private function __construct(string $orderNumber, OrderData $order, $urlPrefix)
     {
         $this->orderNumber = $orderNumber;
         $this->order = $order;
+        $this->urlPrefix = $urlPrefix;
     }
 }

@@ -2,6 +2,7 @@
 namespace SnowIO\ZigZagDataModel\Tests\Unit\Order;
 
 use PHPUnit\Framework\TestCase;
+use SnowIO\ZigZagDataModel\Order\Commands\CreateOrderCommand;
 use SnowIO\ZigZagDataModel\Order\Contact;
 use SnowIO\ZigZagDataModel\Order\Contact\Address;
 use SnowIO\ZigZagDataModel\Order\OrderData;
@@ -64,4 +65,29 @@ class OrderTest extends TestCase
             )
             ->withShippingContact($contact);
     }
+
+  public function testCreateOrderCommand(): void
+  {
+    $order = $this->getOrderData();
+
+    $command1 = CreateOrderCommand::of('orderNumber', $order);
+    $command2 = CreateOrderCommand::of('orderNumber', $order);
+    self::assertTrue($command1 == $command2);
+
+    $command1 = CreateOrderCommand::of('orderNumber', $order);
+    $command2 = CreateOrderCommand::of('orderNumber', $order, 'url/%s');
+    self::assertFalse($command1 == $command2);
+
+    $command3 = CreateOrderCommand::of('orderNumber', $order, 'url/%s');
+    self:self::assertEquals([
+      'uri' => 'url/orderNumber',
+      'body' => $order->toJson(),
+    ], $command3->toJson());
+
+    $command4 = CreateOrderCommand::of('orderNumber', $order);
+    self::assertEquals([
+    'uri' => '/RetailerOrders/orderNumber',
+    'body' => $order->toJson(),
+  ], $command4->toJson());
+  }
 }
